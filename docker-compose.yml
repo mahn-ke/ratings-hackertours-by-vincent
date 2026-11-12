@@ -1,0 +1,16 @@
+#http
+version: "3.8"
+
+services:
+  app:
+    image: ghcr.io/mahn-ke/ratings-hackertours-by-vincent:latest
+    restart: on-failure:5
+    environment:
+      - PORT=3023
+    ports:
+      - "3023:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3023/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
