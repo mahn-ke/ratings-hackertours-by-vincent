@@ -1,6 +1,12 @@
 {
-    "name": "ratings-hackertours-by-vincent",
-    "scripts": {
-        "start": "node main.js"
-    }
+  "name": "ratings-hackertours",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "main": "main.js",
+  "scripts": { "test": "node --test", "start": "node main.js" },
+  "repository": { "type": "git", "url": "git+https://github.com/mahn-ke/ratings-hackertours-by-vincent.git" },
+  "author": "Vincent Mahnke (vincent@mahn.ke)",
+  "license": "ISC",
+  "dependencies": { "jose": "^6.1.3" }
 }

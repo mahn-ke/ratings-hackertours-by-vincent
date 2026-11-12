@@ -6,11 +6,17 @@ services:
     image: ghcr.io/mahn-ke/ratings-hackertours-by-vincent:latest
     restart: on-failure:5
     environment:
-      - PORT=3023
+      - OAUTH_URL=${OAUTH_URL:-https://sso.by.vincent.mahn.ke/realms/sso.by.vincent.mahn.ke}
+      - OAUTH_CONSOLE_3DS_CLIENT_ID=${OAUTH_CONSOLE_3DS_CLIENT_ID:-}
+      - OAUTH_CONSOLE_XBOX_CLIENT_ID=${OAUTH_CONSOLE_XBOX_CLIENT_ID:-}
+      - OAUTH_CONSOLE_SWITCH_CLIENT_ID=${OAUTH_CONSOLE_SWITCH_CLIENT_ID:-}
+      - OAUTH_CONSOLE_GBA_CLIENT_ID=${OAUTH_CONSOLE_GBA_CLIENT_ID:-}
+      - DATABASE_PATH=/data/ratings.sqlite
+      - DRAWINGS_PATH=/data/drawings
+    volumes:
+      - ratings:/data
     ports:
       - "3023:3000"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3023/healthz"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+
+volumes:
+  ratings:
